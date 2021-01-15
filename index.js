@@ -43,9 +43,13 @@ mongoose
     return Recipe.create(data);
   })
   .then((recipe) => {
-    for (let k of recipe) {
-      console.log(k.title);
-    }
+    return Recipe.findOneAndUpdate(
+      { title: 'Rigatoni alla Genovese' },
+      { duration: 100 }
+    );
+  })
+  .then((data) => {
+    console.log('You updated the ' + data);
   })
   .catch((error) => {
     console.error('Error connecting to the database', error);
