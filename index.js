@@ -47,14 +47,19 @@ mongoose
     //   { title: 'Rigatoni alla Genovese' },
     //   { duration: 100 }
     // );
-
-    return Recipe.findOneAndDelete({ title: 'Carrot Cake' });
+    // return Recipe.findOneAndDelete({ title: 'Carrot Cake' });
   })
   .then((data) => {
     console.log('You deleted the recipe');
     // for (let k of recipe) {
     //   console.log(k.title);
     // }
+  })
+  .then(() => {
+    return mongoose.disconnect();
+  })
+  .then(() => {
+    console.log('Connection closed!');
   })
   .catch((error) => {
     console.error('Error connecting to the database', error);
